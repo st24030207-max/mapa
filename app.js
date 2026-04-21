@@ -1,6 +1,6 @@
 // ── CONFIGURACIÓN ────────────────────────────
-const SUPABASE_URL = 'https://tbgreotfjxhmgfasljbb.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_gwCIvFRVdduFYtIKd1yTSw_oGXynXi0';
+const SUPABASE_URL = 'https://gbwrlxfwwdtwwgwsujfg.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_y4Fw4GcS2krSDXJQmyXvRQ_FA0R85m0';
 const TABLA        = 'Lugares';
 
 // ── SUPABASE ─────────────────────────────────

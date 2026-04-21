@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg:        #0d0f14;
+  --surface:   #151821;
+  --surface2:  #1c2030;
+  --border:    #272d3d;
+  --border2:   #323a52;
+  --accent:    #f97316;
+  --accent-dim:#7a3910;
+  --accent-glow: rgba(249,115,22,.18);
+  --text:      #e8ecf2;
+  --text-muted:#7d8aa0;
+  --text-dim:  #4a5468;
+  --danger:    #f43f5e;
+  --success:   #22d3a0;
+  --radius:    10px;
+  --radius-sm: 6px;
+  --transition: 180ms ease;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── SCROLLBAR ───────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 99px; }
+
+/* ── HEADER ──────────────────────────────── */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  width: 34px;
+  height: 34px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  box-shadow: 0 0 14px var(--accent-glow);
+}
+
+header h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+header h1 span {
+  color: var(--accent);
+}
+
+#total {
+  font-size: 0.72rem;
+  font-family: 'DM Mono', monospace;
+  background: var(--surface2);
+  color: var(--accent);
+  border: 1px solid var(--border2);
+  padding: 4px 12px;
+  border-radius: 99px;
+  letter-spacing: .04em;
+}
+
+/* ── LAYOUT ──────────────────────────────── */
+.layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── PANEL ───────────────────────────────── */
+.panel {
+  width: 288px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.panel-section {
+  padding: 20px 20px 0;
+}
+
+.panel-section + .panel-section {
+  padding-top: 24px;
+}
+
+.panel h2 {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+/* ── FORM ────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: .02em;
+}
+
+input {
+  padding: 9px 12px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+input::placeholder { color: var(--text-dim); }
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.hint {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 2px;
+}
+
+.hint::before {
+  content: '↓';
+  font-size: 10px;
+  color: var(--accent);
+}
+
+/* ── BOTÓN GUARDAR ───────────────────────── */
+#btn-guardar {
+  width: 100%;
+  padding: 10px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+  margin: 8px 0 20px;
+  letter-spacing: .01em;
+  box-shadow: 0 0 0 0 var(--accent-glow);
+}
+
+#btn-guardar:hover {
+  background: #fb923c;
+  box-shadow: 0 0 18px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+#btn-guardar:active { transform: translateY(0); }
+
+/* ── LISTA ───────────────────────────────── */
+#lista {
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.empty {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  padding: 24px 0;
+}
+
+.lugar-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  background: var(--surface2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition), transform var(--transition);
+  gap: 8px;
+}
+
+.lugar-card:hover {
+  border-color: var(--border2);
+  background: #202636;
+  transform: translateX(2px);
+}
+
+.lugar-card.active {
+  border-color: var(--accent);
+  background: #1e1710;
+  box-shadow: 0 0 0 1px var(--accent-dim);
+}
+
+.lugar-card.active .nombre { color: var(--accent); }
+
+.lugar-info .nombre {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lugar-info .coords {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+  margin-top: 2px;
+}
+
+/* ── BOTÓN ELIMINAR ──────────────────────── */
+.btn-delete {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 5px 7px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  line-height: 1;
+}
+
+.btn-delete:hover {
+  background: rgba(244,63,94,.15);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* ── MAPA ────────────────────────────────── */
+#map {
+  flex: 1;
+  filter: brightness(.9) saturate(.7);
+}
+
+/* ── TOOLTIP ─────────────────────────────── */
+#tooltip {
+  position: fixed;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  display: none;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  min-width: 140px;
+}
+
+#tooltip.visible { display: block; }
+
+#tt-nombre {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+#tt-coords {
+  display: block;
+  font-size: 0.68rem;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+}
+
+/* ── MODAL ───────────────────────────────── */
+dialog {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  padding: 28px;
+  color: var(--text);
+  max-width: 340px;
+  width: 90%;
+  box-shadow: 0 24px 64px rgba(0,0,0,.7);
+}
+
+dialog::backdrop {
+  background: rgba(0,0,0,.65);
+  backdrop-filter: blur(3px);
+}
+
+dialog p:first-child {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+#modal-nombre-texto {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  margin-bottom: 20px;
+  font-family: 'DM Mono', monospace;
+}
+
+.modal-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+#btn-cancelar {
+  background: var(--surface2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+}
+
+#btn-cancelar:hover {
+  background: var(--border);
+  color: var(--text);
+}
+
+button.danger {
+  background: var(--danger);
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+button.danger:hover {
+  background: #fb7185;
+  box-shadow: 0 0 16px rgba(244,63,94,.3);
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MapaBase</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <div class="logo-icon">📍</div>
+      <h1>Mapa<span>Base</span></h1>
+    </div>
+    <span id="total">0 lugares</span>
+  </header>
+
+  <div class="layout">
+
+    <aside class="panel">
+
+      <div class="panel-section">
+        <h2>Nuevo lugar</h2>
+
+        <div class="field">
+          <label>Nombre</label>
+          <input type="text" id="inp-nombre" placeholder="Ej. Café Central"/>
+        </div>
+
+        <div class="field">
+          <label>Latitud</label>
+          <input type="number" id="inp-lat" placeholder="25.000" step="any"/>
+        </div>
+
+        <div class="field">
+          <label>Longitud</label>
+          <input type="number" id="inp-lng" placeholder="-103.000" step="any"/>
+        </div>
+
+        <p class="hint">Clic en el mapa para capturar coordenadas</p>
+
+        <button id="btn-guardar">Guardar lugar</button>
+      </div>
+
+      <div class="panel-section">
+        <h2>Guardados</h2>
+      </div>
+      <div id="lista">
+        <p class="empty">Sin lugares aún</p>
+      </div>
+
+    </aside>
+
+    <div id="map"></div>
+
+  </div>
+
+  <!-- Tooltip hover -->
+  <div id="tooltip">
+    <strong id="tt-nombre"></strong>
+    <span id="tt-coords"></span>
+  </div>
+
+  <!-- Modal eliminar -->
+  <dialog id="modal-eliminar">
+    <p>¿Eliminar este lugar?</p>
+    <p id="modal-nombre-texto"></p>
+    <div class="modal-btns">
+      <button id="btn-cancelar">Cancelar</button>
+      <button id="btn-confirmar" class="danger">Eliminar</button>
+    </div>
+  </dialog>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
